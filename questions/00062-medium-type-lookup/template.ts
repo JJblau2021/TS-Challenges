@@ -1,1 +1,7 @@
-type LookUp<U, T> = any
+type LookUp<U, T> = U extends {
+  type: infer P;
+}
+  ? P extends T
+    ? U
+    : never
+  : never;
